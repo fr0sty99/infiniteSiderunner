@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public float speed = 40;
     float horizontalMove = 0f;
     bool jump = false;
-    bool slide = false;
+    bool crouch = false;
 
     // Use this for initialization
     void Start () {
@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour {
 
     // get input from player
     void Update () {
-        horizontalMove = Mathf.Abs(Input.GetAxisRaw("Horizontal") * speed);
+        horizontalMove = Mathf.Abs(speed);
+        Debug.Log("horiz: " + horizontalMove);
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 
@@ -30,10 +31,10 @@ public class PlayerMovement : MonoBehaviour {
         // TODO: implement sliding with animation
         if (Input.GetButtonDown("Slide"))
         {
-            slide = true;
+            crouch = true;
         } else if(Input.GetButtonUp("Slide"))
         {
-            slide = false;
+            crouch = false;
         }
     }
 
@@ -45,7 +46,7 @@ public class PlayerMovement : MonoBehaviour {
     // appy input received in Update()
     private void FixedUpdate()
     {
-        controller.Move(0, slide, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }
 }
