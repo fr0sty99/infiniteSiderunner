@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour {
     public void OnLanding()
     {
         animator.SetBool("isJumping", false);
+        jump = false;
     }
 
     // appy input received in Update()

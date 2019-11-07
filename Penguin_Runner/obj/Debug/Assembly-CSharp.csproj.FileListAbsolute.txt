@@ -241,3 +241,7 @@
 /Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/obj/Debug/Assembly-CSharp.csproj.CopyComplete
 /Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/obj/Debug/Assembly-CSharp.dll
 /Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/obj/Debug/Assembly-CSharp.pdb
+/Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Temp/bin/Debug/Cinemachine.dll
+/Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Temp/bin/Debug/com.unity.cinemachine.editor.dll
+/Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Temp/bin/Debug/Cinemachine.dll.mdb
+/Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Temp/bin/Debug/com.unity.cinemachine.editor.dll.mdb

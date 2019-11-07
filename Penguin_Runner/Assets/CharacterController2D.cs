@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
@@ -12,12 +13,16 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
     [SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
 
+    [SerializeField] private float m_delayGroundCheck = 0.25f;
+
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     private bool m_Grounded;            // Whether or not the player is grounded.
     const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
+
+    private float timeBeforeGroundCheck = 0f;
 
     [Header("Events")]
     [Space]
@@ -41,8 +46,20 @@ public class CharacterController2D : MonoBehaviour
             OnCrouchEvent = new BoolEvent();
     }
 
+    private void Update()
+    {
+        if (!m_Grounded)
+        {
+            timeBeforeGroundCheck -= Time.deltaTime;
+        }
+    }
+
     private void FixedUpdate()
     {
+        if (timeBeforeGroundCheck > 0f)
+        {
+            return;
+        }
         bool wasGrounded = m_Grounded;
         m_Grounded = false;
 
@@ -54,7 +71,7 @@ public class CharacterController2D : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 m_Grounded = true;
-                if (!wasGrounded && m_Rigidbody2D.velocity.y < 0)
+                if (!wasGrounded)
                     OnLandEvent.Invoke();
             }
         }
@@ -130,6 +147,8 @@ public class CharacterController2D : MonoBehaviour
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+
+            timeBeforeGroundCheck = m_delayGroundCheck;
         }
     }
 
