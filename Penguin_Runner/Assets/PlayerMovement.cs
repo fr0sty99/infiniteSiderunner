@@ -38,12 +38,6 @@ public class PlayerMovement : MonoBehaviour {
             crouch = false;
         }
 
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        SceneManager.LoadScene("MainScene");
     }
 
     public void OnLanding()

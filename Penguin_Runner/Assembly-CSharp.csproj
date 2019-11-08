@@ -61,11 +61,14 @@
   <ItemGroup>
     <Compile Include="Assets\CameraMover.cs" />
     <Compile Include="Assets\CharacterController2D.cs" />
+    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\MapDestroyer.cs" />
     <Compile Include="Assets\MapGenerator.cs" />
     <Compile Include="Assets\MoveScript.cs" />
     <Compile Include="Assets\ObjectPooler.cs" />
+    <Compile Include="Assets\PlayerCollision.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
+    <Compile Include="Assets\ScoreCounter.cs" />
     <Reference Include="Cinemachine">
       <HintPath>/Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
