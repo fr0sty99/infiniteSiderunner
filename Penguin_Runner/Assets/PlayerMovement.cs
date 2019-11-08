@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -18,27 +19,31 @@ public class PlayerMovement : MonoBehaviour {
 
     // get input from player
     void Update () {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
+        horizontalMove = Mathf.Abs(speed);
+        Debug.Log("horiz: " + horizontalMove);
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
-            animator.SetBool("isJumping", true);
+             animator.SetBool("isJumping", true);
         }
-        if (Input.GetButtonDown("Crouch"))
+        // TODO: implement sliding with animation
+        if (Input.GetButtonDown("Slide"))
         {
             crouch = true;
-        } else if(Input.GetButtonUp("Crouch"))
+        } else if(Input.GetButtonUp("Slide"))
         {
             crouch = false;
         }
+
     }
 
     public void OnLanding()
     {
         animator.SetBool("isJumping", false);
+        jump = false;
     }
 
     // appy input received in Update()
