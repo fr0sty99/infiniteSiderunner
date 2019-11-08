@@ -1,34 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class MapGenerator : MonoBehaviour {
-    public List<GameObject> boxes;
-    public GameObject boxPrefab;
-    public Transform playerPosition;
+    public List<GameObject> platforms;
+    public Transform generationPoint;
+    public float distanceBetweenObstacles;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		foreach(GameObject box in boxes)
+    private float platformWidth;
+    private int random = 0;
+    private int lastRandom = 0;
+
+    public float distanceBetweenObstaclesMin;
+    public float distanceBetweenObstaclesMax;
+
+    public ObjectPooler objectPool;
+
+    private void Start()
+    {
+        platformWidth = 40;
+    }
+
+    private void Update()
+    {
+        if(transform.position.x < generationPoint.position.x)
         {
-            if(box.transform.position.x+35 < playerPosition.position.x)
+            // platforms
+            transform.position = new Vector2(transform.position.x + platformWidth, transform.position.y);
+            while(random == lastRandom)
             {
-                // remove old box
-                boxes.Remove(box);
-                Object.Destroy(box);
-
-                // create new box and set position at the "end of the world" :P
-                GameObject newBox = Instantiate(boxPrefab);
-                newBox.transform.position = new Vector2(box.transform.position.x + 150, box.transform.position.y);
-                boxes.Add(newBox);
+                random = Random.Range(0, platforms.Count-1);
             }
+            lastRandom = random;
+            Instantiate(platforms[random], transform.position, transform.rotation);
 
+            /*
+            GameObject newPlatform = objectPool.GetPooledObject();
+            newPlatform.transform.position = transform.position;
+            newPlatform.transform.rotation = transform.rotation;
+            newPlatform.SetActive(true);
+            */
         }
     }
+
 }

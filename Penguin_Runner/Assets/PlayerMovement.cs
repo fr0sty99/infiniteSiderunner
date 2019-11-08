@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
-            animator.SetBool("isJumping", true);
+             animator.SetBool("isJumping", true);
         }
         // TODO: implement sliding with animation
         if (Input.GetButtonDown("Slide"))
@@ -36,6 +37,13 @@ public class PlayerMovement : MonoBehaviour {
         {
             crouch = false;
         }
+
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     public void OnLanding()
