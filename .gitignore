@@ -46,7 +46,9 @@ testem.log
 Thumbs.db
 
 # Temp Project Files 
-Penguin_Runner/Temp/*
+Penguin_Runner/Temp/* 
+Penguin_Runner/Temp
+Penguin_Ruinner/Temp/
 Penguin_Runner/Library/*
 
 
