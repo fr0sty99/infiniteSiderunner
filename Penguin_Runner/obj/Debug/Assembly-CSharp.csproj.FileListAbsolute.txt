@@ -245,3 +245,4 @@
 /Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Temp/bin/Debug/com.unity.cinemachine.editor.dll
 /Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Temp/bin/Debug/Cinemachine.dll.mdb
 /Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Temp/bin/Debug/com.unity.cinemachine.editor.dll.mdb
+/Users/Joris/Data/DEVEL/2019/penguin_siderunner/Penguin_Runner/Temp/bin/Debug/UnityEngine.WebGLModule.dll

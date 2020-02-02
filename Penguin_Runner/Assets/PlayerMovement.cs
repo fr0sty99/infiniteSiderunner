@@ -17,10 +17,10 @@ public class PlayerMovement : MonoBehaviour {
 		
 	}
 
+
     // get input from player
     void Update () {
         horizontalMove = Mathf.Abs(speed);
-        Debug.Log("horiz: " + horizontalMove);
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 
@@ -36,6 +36,12 @@ public class PlayerMovement : MonoBehaviour {
         } else if(Input.GetButtonUp("Slide"))
         {
             crouch = false;
+        }
+
+
+        if(Input.GetButtonUp("Jump"))
+        {
+            controller.EliminateJumpForce();
         }
 
     }
